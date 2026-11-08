@@ -11,7 +11,7 @@ function UserContext({children}) {
     const [loading, setLoading] = useState(true)
 
 
-    const serverURL = "http://localhost:8000"
+    const serverURL = "https://ai-virtual-assistant-backend-05ys.onrender.com"
     
     const CurrentUser = async ()=>{
       try {
