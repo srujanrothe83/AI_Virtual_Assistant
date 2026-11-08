@@ -278,7 +278,7 @@ const [menuOpen, setMenuOpen] = useState(false);
       )}
 
       {status === "speaking" && (
-        <p className="text-lg font-semibold text-[#2b2a2a] wrap-break-word">
+        <p className="text-lg font-semibold text-blue-700 wrap-break-word">
           {typedText}
           <span className="animate-pulse text-blue-400">|</span>
         </p>
