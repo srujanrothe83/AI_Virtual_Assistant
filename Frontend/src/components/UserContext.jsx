@@ -11,6 +11,8 @@ function UserContext({children}) {
     const [loading, setLoading] = useState(true)
 
 
+    const serverURL = "http://localhost:8000"
+    
     const CurrentUser = async ()=>{
       try {
         const result = await axios.get(`${serverURL}/api/user/getuser`,{
@@ -35,7 +37,7 @@ function UserContext({children}) {
       return result.data
     }
 
-    const serverURL = "http://localhost:8000"
+    
     const value = {
         serverURL,user, setUser , frontendImage , setFrontendImage , backendImage , setBackendImage , selectedImage , setSelectedImage , loading, setLoading , getGeminiResponse
     }

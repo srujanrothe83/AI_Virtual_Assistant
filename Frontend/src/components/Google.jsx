@@ -12,7 +12,7 @@ const {serverURL , setUser} = useContext(userDataContext)
   const handleSuccess = async (response) => {
     try {
       const result = await axios.post(
-        "http://localhost:8000/api/auth/google",
+        `${serverURL}/api/auth/google`,
         {
           credential: response.credential,
         },
