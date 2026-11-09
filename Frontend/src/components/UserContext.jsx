@@ -20,7 +20,6 @@ function UserContext({children}) {
           withCredentials:true
         })
         setUser(result.data.user)
-        console.log(result.data.user)
       } catch (error) {
         console.log(error)
       }finally {
