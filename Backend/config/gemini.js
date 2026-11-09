@@ -94,7 +94,7 @@ IMPORTANT:
         console.log("Antigravity Status:", result.data?.status);
         console.log("Antigravity Response:", JSON.stringify(result.data, null, 2));
 
-        cconst modelOutput = result.data?.steps?.find(
+        const modelOutput = result.data?.steps?.find(
     step => step.type === "model_output"
 );
 
