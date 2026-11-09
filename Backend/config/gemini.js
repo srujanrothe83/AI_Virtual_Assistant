@@ -80,7 +80,7 @@ IMPORTANT:
                 agent_config: {
                     type: "antigravity",
                     model: "gemini-3.8-flash",
-                    max_total_tokens: 4000
+                    max_total_tokens: 8000
                 }
             },
             {
@@ -94,12 +94,17 @@ IMPORTANT:
         console.log("Antigravity Status:", result.data?.status);
         console.log("Antigravity Response:", JSON.stringify(result.data, null, 2));
 
-        const response = result.data?.output_text;
+        cconst modelOutput = result.data?.steps?.find(
+    step => step.type === "model_output"
+);
+
+        const response = modelOutput?.content?.find(
+    item => item.type === "text")?.text;
 
         if (!response) {
-            throw new Error(
-                    `No output text. Status: ${result.data?.status || "unknown"}`
-    );
+                console.log("Antigravity Full Response:", result.data);
+
+        throw new Error("Antigravity did not generate a response");
 }
 
 return response;
