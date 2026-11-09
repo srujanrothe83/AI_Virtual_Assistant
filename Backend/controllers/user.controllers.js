@@ -73,12 +73,18 @@ export const askToGemini = async (req, res) => {
         const assistantName = user.assistantName;
 
         const result = await geminiResponse(
-            prompt,
-            assistantName,
-            userName
+                prompt,
+                assistantName,
+                userName
         );
 
-        const gemResult = JSON.parse(result);
+        console.log("Raw Gemini Result:", result);
+
+        const gemResult = typeof result === "string"
+                ? JSON.parse(result.replace(/```json|```/g, "").trim())
+                : result;
+
+        console.log("Parsed Gemini Result:", gemResult);
         const { type } = gemResult;
 
         const now = moment().tz("Asia/Kolkata");
@@ -127,10 +133,13 @@ export const askToGemini = async (req, res) => {
         }
 
     } catch (error) {
-        console.log("Ask Gemini Error:", error.message);
+    console.log("Ask Gemini Error:", error);
+    console.log("Error Message:", error.message);
+    console.log("Error Stack:", error.stack);
 
-        return res.status(500).json({
-            message: "Ask to Gemini error"
-        });
-    }
+    return res.status(500).json({
+        message: "Ask to Gemini error",
+        error: error.message
+    });
+}
 };
