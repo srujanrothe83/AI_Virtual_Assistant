@@ -91,13 +91,18 @@ IMPORTANT:
             }
         );
 
+        console.log("Antigravity Status:", result.data?.status);
+        console.log("Antigravity Response:", JSON.stringify(result.data, null, 2));
+
         const response = result.data?.output_text;
 
         if (!response) {
-            throw new Error("Antigravity returned an empty response");
-        }
+            throw new Error(
+                    `No output text. Status: ${result.data?.status || "unknown"}`
+    );
+}
 
-        return response;
+return response;
 
     } catch (error) {
         console.log(
