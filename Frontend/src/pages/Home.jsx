@@ -155,11 +155,7 @@ const [menuOpen, setMenuOpen] = useState(false);
           return;
         }
 
-        console.log("Sending command to Gemini...");
-
         const gemResult = await geminiRef.current(prompt);
-
-        console.log("Gemini response:", gemResult);
 
         if (!gemResult || !gemResult.type) {
           throw new Error("Invalid Gemini response");
