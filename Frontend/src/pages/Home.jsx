@@ -325,7 +325,7 @@ const [menuOpen, setMenuOpen] = useState(false);
   >
     <div className="flex items-center justify-between">
       <h3 className="text-lg font-bold text-white truncate">
-        {user.assistantName}
+        {user.name}
       </h3>
       <button
         onClick={() => setMenuOpen(false)}
